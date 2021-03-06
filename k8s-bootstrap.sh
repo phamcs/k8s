@@ -6,7 +6,7 @@ sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 sysctl -p /etc/sysctl.conf
 
 swapoff -a
-sed -i '2s/^/#/' /etc/fstab 
+sed -i '/swap.img/s/^#\?/#/' /etc/fstab 
 
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
