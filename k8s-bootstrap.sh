@@ -22,7 +22,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 sysctl --system
-apt-get update && apt-get install -y apt-transport-https ca-certificates containerd software-properties-common
+apt-get update && apt-get install -y curl apt-transport-https ca-certificates containerd software-properties-common
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
@@ -51,5 +51,8 @@ EOF
 # folder to save audit logs
 mkdir -p /var/log/kubernetes/audit
 
-## Install NFS Client Drivers
+## Install NFS Client Drivers and HELM
 apt-get update && apt-get install -y nfs-common
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+apt-get update && apt-get install -y helm
