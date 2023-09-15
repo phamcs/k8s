@@ -1,0 +1,158 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: multi-container-ipc-nginx-proxy
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mc3-nginx-conf
+  namespace: multi-container-ipc-nginx-proxy
+data:
+  nginx.conf-PROXY: |-
+    user  nginx;
+    worker_processes  1;
+    error_log  /var/log/nginx/error.log warn;
+    pid        /var/run/nginx.pid;
+
+    events {
+        worker_connections  1024;
+    }
+
+    http {
+      include       /etc/nginx/mime.types;
+      default_type  application/octet-stream;
+
+      log_format  main  ' -  [] "" '
+                        '  "" '
+                        '"" ""';
+
+      access_log  /var/log/nginx/access.log  main;
+      sendfile        on;
+      keepalive_timeout  65;
+
+      upstream webapp {
+        server 127.0.0.1:8080;
+      }
+
+      server {
+        add_header Custom-Header TestPROXY;
+        listen       80;
+        server_name  localhost;
+        location / {
+          proxy_pass         http://webapp;
+          proxy_redirect     off;
+          #root   /usr/share/nginx/html;
+          #index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+          root   /usr/share/nginx/html;
+        }
+      }
+    }
+
+  nginx.conf-HTTP: |-
+    user  nginx;
+    worker_processes  1;
+    error_log  /var/log/nginx/error.log warn;
+    pid        /var/run/nginx.pid;
+
+    events {
+        worker_connections  1024;
+    }
+
+    http {
+      include       /etc/nginx/mime.types;
+      default_type  application/octet-stream;
+
+      log_format  main  ' -  [] "" '
+                        '  "" '
+                        '"" ""';
+
+      access_log  /var/log/nginx/access.log  main;
+      sendfile        on;
+      keepalive_timeout  65;
+
+      server {
+        add_header Custom-Header TestHTTP;
+        listen       8080;
+        server_name  localhost;
+        location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+          root   /usr/share/nginx/html;
+        }
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phamcs-nginx
+  namespace: multi-container-ipc-nginx-proxy
+spec:
+  selector:
+    matchLabels:
+      run: phamcs-nginx
+  replicas: 1
+
+  template:
+    metadata:
+      labels:
+        run: phamcs-nginx
+
+    spec:
+
+      volumes:
+      - name: nginx-proxy-config
+        configMap:
+          name: mc3-nginx-conf
+
+      containers:
+
+      - name: proxy
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-proxy-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf-PROXY
+
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: nginx-proxy-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf-HTTP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phamcs-nginx
+  namespace: multi-container-ipc-nginx-proxy
+  labels:
+    run: phamcs-nginx
+spec:
+  type: LoadBalancer
+  ports:
+  - name: proxy
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    run: phamcs-nginx
