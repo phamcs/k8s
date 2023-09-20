@@ -43,16 +43,14 @@ We're thinking about Ecosystem so we used 3 mini computers that consume 15w each
 ## What's included
 
 We assumed that you've already know the concepts of Kubernetes cluster by read up on documentation about Kubernetes.
+We're providing bootstrap script to help with the process but you need to do it in the right order.
 
 ```text
-folder1/
-└── folder2/
-    ├── folder3/
-    │   ├── file1
-    │   └── file2
-    └── folder4/
-        ├── file3
-        └── file4
+1. Your nodes should be up-to-date with static ip setup
+2. Init the cluster with kubeadm --apiserver-advertise-address=<your-ip-address>
+3. Install the CNI network of your choice. (We're using calico)
+4. Install Portainer to gain control over the cluster in web GUI
+5. Install ingress-nginx to be the Load Balancer
 ```
 
 ## Bugs and feature requests
