@@ -46,11 +46,12 @@ We assumed that you've already know the concepts of Kubernetes cluster by read u
 We're providing bootstrap script to help with the process but you need to do it in the right order.
 
 ```text
-1. Your nodes should be up-to-date with static ip setup
+1. Your nodes should be up-to-date with static ip setup before running the bootstrap script.
 2. Init the cluster with kubeadm --apiserver-advertise-address=<your-ip-address>
 3. Install the CNI network of your choice. (We're using calico)
 4. Install Portainer to gain control over the cluster in web GUI
 5. Install ingress-nginx to be the Load Balancer
+6. Install nfs for persistent storage
 ```
 
 ## Bugs and feature requests
