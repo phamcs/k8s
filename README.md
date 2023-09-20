@@ -33,7 +33,7 @@
 We assumed you've already got your servers setup for K8S. This included:
 
 - 3 Ubuntu Servers in odd number (minimum 3 nodes). Our setup on 22.04 LTS but it should works with 20.04 LTS.
-- ssh access to your servers and able to run as root
+- ssh access to your servers and able to run as root. NFS server for persistent storage.
 - Linux Sysadmin skills
 
 ## Ecosystem
@@ -74,7 +74,7 @@ Editor preferences are available in the [editor config](https://reponame/blob/ma
 
 ## Thanks
 
-Some Text
+We want everyone beable to setup K8S for learning purposes. As a nerd you need to know this stuff as this technology will dominate deployment process for future.
 
 ## Copyright and license
 
