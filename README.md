@@ -34,11 +34,11 @@ We assumed you've already got your servers setup for K8S. This included:
 
 - Servers in odd number (minimum 3 nodes)
 - ssh access to your servers and able to run as root
-- Instruction 3
+- Linux Sysadmin skills
 
 ## Status
 
-Here goes all the budgets
+We're thinking about Ecosystem so we used 3 mini computers that consume 15w each! Yes 15w!
 
 ## What's included
 
