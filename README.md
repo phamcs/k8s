@@ -20,7 +20,7 @@
 ## Table of contents
 
 - [Pre-Requirements](#Pre-requirements)
-- [Status](#status)
+- [Ecosystem](#Ecosystem)
 - [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
@@ -32,17 +32,17 @@
 ## Pre-Requirements:
 We assumed you've already got your servers setup for K8S. This included:
 
-- Servers in odd number (minimum 3 nodes)
+- 3 Ubuntu Servers in odd number (minimum 3 nodes). Our setup on 22.04 LTS but it should works with 20.04 LTS.
 - ssh access to your servers and able to run as root
 - Linux Sysadmin skills
 
-## Status
+## Ecosystem
 
 We're thinking about Ecosystem so we used 3 mini computers that consume 15w each! Yes 15w!
 
 ## What's included
 
-Some text
+We assumed that you've already know the concepts of Kubernetes cluster by read up on documentation about Kubernetes.
 
 ```text
 folder1/
