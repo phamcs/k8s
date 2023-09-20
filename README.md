@@ -19,7 +19,7 @@
 
 ## Table of contents
 
-- [Quick start](#quick-start)
+- [Pre-Requirements](#Pre-requirements)
 - [Status](#status)
 - [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
@@ -29,12 +29,11 @@
 - [Copyright and license](#copyright-and-license)
 
 
-## Quick start
+## Pre-Requirements:
+We assumed you've already got your servers setup for K8S. This included:
 
-Some text
-
-- Instruction 1
-- Instruction 2
+- Servers in odd number (minimum 3 nodes)
+- ssh access to your servers and able to run as root
 - Instruction 3
 
 ## Status
@@ -70,9 +69,9 @@ Editor preferences are available in the [editor config](https://reponame/blob/ma
 
 ## Creators
 
-**Creator 1**
+**phamcs**
 
-- <https://github.com/usernamecreator1>
+- <https://github.com/phamcs>
 
 ## Thanks
 
