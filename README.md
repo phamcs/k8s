@@ -1,5 +1,5 @@
 # K8S (aka: Kubernetes)
-## My notes for Kubernetes Setup
+## My notes for setup Kubernetes Cluster
 <p align="center">
   <a href="https://example.com/">
     <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
