@@ -8,7 +8,7 @@
   <h3 align="center">Logo</h3>
 
   <p align="center">
-    <h2> My notes for setup Kubernetes Cluster </h2>h2>
+    <h2> My notes for setup Kubernetes Cluster </h2>
     <br>
     <a href="https://reponame/issues/new?template=bug.md">Report bug</a>
     ·
