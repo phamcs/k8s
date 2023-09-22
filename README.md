@@ -1,5 +1,5 @@
 # K8S (aka: Kubernetes)
-## My notes for setup Kubernetes Cluster
+
 <p align="center">
   <a href="https://example.com/">
     <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
@@ -8,7 +8,7 @@
   <h3 align="center">Logo</h3>
 
   <p align="center">
-    Short description
+    <h2> My notes for setup Kubernetes Cluster </h2>h2>
     <br>
     <a href="https://reponame/issues/new?template=bug.md">Report bug</a>
     ·
