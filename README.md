@@ -29,7 +29,7 @@
 ## Pre-Requirements:
 We assumed you've already got your servers setup for K8S. This included:
 
-- 3 Ubuntu Servers in odd number (minimum 3 nodes). Our setup on 22.04 LTS but it should works with 20.04 LTS.
+- Ubuntu Servers in odd number (minimum 3 nodes). Our setup on 22.04 LTS but it should works with 20.04 LTS.
 - ssh access to your servers and able to run as root. NFS server for persistent storage.
 - Linux Sysadmin skills
 
