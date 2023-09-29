@@ -50,6 +50,8 @@ We're providing bootstrap script to help with the process but you need to do it 
 5. Install Portainer to gain control over the cluster in web GUI
 6. Install ingress-nginx to be the Load Balancer
 7. Install nfs for persistent storage
+8. Install kubesphere to gain control of your cluster in web GUI
+9. Install KubeVirt if your hardware support it to gain kvm access
 ```
 
 ## Bugs and feature requests
