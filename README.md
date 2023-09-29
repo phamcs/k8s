@@ -42,10 +42,11 @@ We're thinking about Ecosystem so we used 3 mini computers that consume 15w each
 We assumed that you've already know the concepts of Kubernetes cluster by read up on documentation about Kubernetes.
 We're providing bootstrap script to help with the process but you need to do it in the right order.
 Also, BIG NOTICE that you need to edit the environments to match your need aka: nfs storage resources.
+The instruction below is for single master setup only. For multiple masters setup please see HA setup for Kubernetes.
 
 ```text
 1. Your nodes should be up-to-date with static ip setup before running the bootstrap script.
-2. Init the cluster with kubeadm --apiserver-advertise-address=<your-ip-address>
+2. Init the cluster with kubeadm init --apiserver-advertise-address=<your-ip-address>
 3. Install the CNI network of your choice. (We're using calico)
 4. Check master node & join workers to master node
 5. Install Portainer to gain control over the cluster in web GUI
