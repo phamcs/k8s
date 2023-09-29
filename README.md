@@ -41,6 +41,7 @@ We're thinking about Ecosystem so we used 3 mini computers that consume 15w each
 
 We assumed that you've already know the concepts of Kubernetes cluster by read up on documentation about Kubernetes.
 We're providing bootstrap script to help with the process but you need to do it in the right order.
+Also, BIG NOTICE that you need to edit the environments to match your need aka: nfs storage resources.
 
 ```text
 1. Your nodes should be up-to-date with static ip setup before running the bootstrap script.
