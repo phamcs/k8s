@@ -1,4 +1,4 @@
-# K8S (aka: Kubernetes)
+# Kubernetes (K8s)
 
 <p align="center">
   <a href="https://example.com/">
