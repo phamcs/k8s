@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://example.com/">
-    <img src="https://github.com/phamcs/kubernetes/blob/master/logo/logo.svg" alt="Logo">
+    <img src="https://github.com/phamcs/kubernetes/blob/master/logo/logo.svg" alt="Logo" width="72" height="72">
   </a>
 
   <p align="center">
@@ -75,10 +75,11 @@ Editor preferences are available in the [editor config](https://reponame/blob/ma
 
 ## Thanks
 
-We want everyone beable to setup K8S for learning purposes. As a nerd you need to know this stuff as this technology will dominate deployment process for future.
+We want everyone beable to setup K8S for learning purposes. As a nerd you need to know this stuff as this technology will dominate applications deployment process for future.
 If you think this is helpful please consider donating for us.
 
-**BTC:** 1H9WXBXWwsu9tWJb5rdE9ZTUU4vae7VLUY
+## **BTC:** 
+- 1H9WXBXWwsu9tWJb5rdE9ZTUU4vae7VLUY
 
 ## Copyright and license
 
