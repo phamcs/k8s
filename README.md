@@ -1,7 +1,7 @@
 # Kubernetes (K8s)
 
 <p align="center">
-  <a href="https://example.com/">
+  <a href="https://github.com/phamcs/k8s">
     <img src="https://github.com/phamcs/kubernetes/blob/master/logo/logo.svg" alt="Logo" width="72" height="72">
   </a>
 
