@@ -2,10 +2,8 @@
 
 <p align="center">
   <a href="https://example.com/">
-    <img src="https://via.placeholder.com/72" alt="Logo" width=72 height=72>
+    <img src="https://github.com/phamcs/kubernetes/blob/master/logo/logo.svg" alt="Logo">
   </a>
-
-  <h3 align="center">Logo</h3>
 
   <p align="center">
     <h2> My notes for setup Kubernetes Cluster </h2>
