@@ -30,8 +30,7 @@ systemctl restart containerd && systemctl enable containerd
 
 # Add K8S Stuff
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/kubernetes-apt-keyring.gpg > /dev/null
 apt-get update && apt install kubernetes-cni -y # not in documentation needed for updates
 apt-get install kubelet kubeadm kubectl -y
 apt-mark hold kubelet kubeadm kubectl
@@ -49,8 +48,9 @@ EOF
 # folder to save audit logs
 mkdir -p /var/log/kubernetes/audit
 
-## Install NFS Client Drivers and HELM
+## Install NFS Client Drivers, HELM, and kustomize
 apt-get update && apt-get install -y nfs-common
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 apt-get update && apt-get install -y helm
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
