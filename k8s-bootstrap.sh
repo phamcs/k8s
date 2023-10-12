@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 ## Generic installation on all nodes
 
 sysctl -w net.ipv4.ip_forward=1
