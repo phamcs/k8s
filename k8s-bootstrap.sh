@@ -22,7 +22,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 sysctl --system
-apt-get update && apt-get install -y wget curl git jq automake autoconf coreutils readline apt-transport-https ca-certificates containerd software-properties-common
+apt-get update && apt-get install -y wget curl git jq automake autoconf coreutils apt-transport-https ca-certificates containerd software-properties-common
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
@@ -31,7 +31,7 @@ systemctl restart containerd && systemctl enable containerd
 # Add K8S Stuff
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/kubernetes-apt-keyring.gpg > /dev/null
-apt-get update && apt install -y kubelet kubeadm kubectl kubernetes-cni  # kubernetes-cni not in documentation but needed for updates
+apt-get update && apt install -y kubelet kubeadm kubectl kubernetes-cni  # kubernetes-cni not in documentation but needed
 apt-mark hold kubelet kubeadm kubectl
 systemctl daemon-reload && systemctl restart kubelet
 
