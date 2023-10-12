@@ -22,7 +22,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 sysctl --system
-apt-get update && apt-get install -y curl apt-transport-https ca-certificates containerd software-properties-common
+apt-get update && apt-get install -y wget curl git jq automake autoconf coreutils readline apt-transport-https ca-certificates containerd software-properties-common
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
@@ -31,8 +31,7 @@ systemctl restart containerd && systemctl enable containerd
 # Add K8S Stuff
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/kubernetes-apt-keyring.gpg > /dev/null
-apt-get update && apt install kubernetes-cni -y # not in documentation needed for updates
-apt-get install kubelet kubeadm kubectl -y
+apt-get update && apt install -y kubelet kubeadm kubectl kubernetes-cni  # kubernetes-cni not in documentation but needed for updates
 apt-mark hold kubelet kubeadm kubectl
 systemctl daemon-reload && systemctl restart kubelet
 
@@ -48,9 +47,15 @@ EOF
 # folder to save audit logs
 mkdir -p /var/log/kubernetes/audit
 
-## Install NFS Client Drivers, HELM, and kustomize
+## Install NFS Client Drivers
 apt-get update && apt-get install -y nfs-common
+## Install HELM
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 apt-get update && apt-get install -y helm
+## Install Kustomize
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+## Install Kompose
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-linux-amd64 -o kompose
+chmod +x kompose
+mv ./kompose /usr/local/bin
