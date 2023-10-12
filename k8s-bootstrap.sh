@@ -59,3 +59,4 @@ curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack
 curl -L https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-linux-amd64 -o kompose
 chmod +x kompose
 mv ./kompose /usr/local/bin
+shutdown -r now
