@@ -22,7 +22,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 sysctl --system
-apt-get update && apt-get install -y wget curl git jq automake autoconf coreutils apt-transport-https ca-certificates containerd software-properties-common
+apt-get update && apt-get install -y wget curl git jq golang automake autoconf coreutils apt-transport-https ca-certificates containerd software-properties-common
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
