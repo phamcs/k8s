@@ -26,6 +26,18 @@ apt-get update && apt-get install -y wget curl git jq golang automake autoconf c
 mkdir -p /etc/containerd
 containerd config default | sudo tee /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
+sed -i 's|^state = ".*"|state = "/var/run/containerd"|' /etc/containerd/config.toml
+sed -i '/^\[grpc\]$/,/^\[/ s|^  address = ".*"|  address = "/var/run/containerd/containerd.sock"|' /etc/containerd/config.toml
+
+# Fix deprecate runtime endpoint containerd
+sudo tee /etc/crictl.yaml > /dev/null <<EOF
+runtime-endpoint: unix:///var/run/containerd/containerd.sock
+image-endpoint: unix:///var/run/containerd/containerd.sock
+timeout: 2
+debug: true
+pull-image-on-create: false
+EOF
+
 systemctl restart containerd && systemctl enable containerd
 
 # Add K8S Stuff
