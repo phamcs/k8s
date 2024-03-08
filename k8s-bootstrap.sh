@@ -67,6 +67,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 apt-get update && apt-get install -y helm
 ## Install Kustomize
 curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+chmod +x customize
+mv ./kustomize /usr/local/bin
 ## Install Kompose
 curl -L https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-linux-amd64 -o kompose
 chmod +x kompose
