@@ -50,7 +50,8 @@ The instruction below is for single master setup only. For multiple masters setu
 5. Install nfs for persistent storage
 6. Install Portainer to gain control over the cluster in web GUI
 7. Install ingress-nginx to be the Load Balancer
-8. Install KubeVirt if your hardware support it to gain kvm access
+8. Install dashboard to gain visual for your cluster
+9. Install KubeVirt if your hardware support it to gain kvm access
 ```
 
 ## Bugs and feature requests
